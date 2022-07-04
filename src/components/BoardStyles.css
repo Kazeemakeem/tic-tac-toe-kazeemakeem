@@ -1,0 +1,193 @@
+.flexed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faint {
+    opacity: 0.5;
+}
+
+.container {
+    background: #1a2a33;
+    width: 100vw;
+    height: 100vh;
+}
+
+.board {
+    margin: 0 auto;
+    height:  60%;  /*32rem*/
+    width: 24.8rem;
+    /* background: #fff; */
+    align-content: center;
+    justify-content: center;
+
+}
+
+.tiles {
+    grid-column: 1 / -1;
+}
+
+.btn {
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, .3);
+}
+
+.btn:active {
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .1);
+}
+
+.btn--top {
+    height: 3rem;
+}
+
+.btn--btm {
+    font-size: 1.2rem;
+    height: 4rem;
+    width: 7.2rem;
+    justify-self: center;
+    color: #1a2a33;
+    font-weight: 600;
+}
+
+.btn--top--restart {
+    width: 3.6rem;
+    justify-self: end;
+    background: #a8bfc9;
+}
+
+.btn--top--player_turn {
+    width: 7.2rem;
+    justify-self: center;
+    background: #1f3641;
+    color: #a8bfc9;
+    align-items: center;
+}
+
+.btn--tiles {
+    align-self: center;
+    justify-self: center;
+    height: 7.2rem;
+    width: 7.2rem;
+    background: #1f3641;
+}
+
+.grid {
+    display: grid;
+    row-gap: 1.6rem;
+    column-gap: 1.6rem;
+}
+
+
+.grid--3--cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.icon {
+   width: 2.4rem;
+   height: 2.4rem;
+   pointer-events: none;
+}
+
+.icon--tile--O,
+.icon--tile--X {
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon--small--O, .icon--small--X {
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+.icon--small--refresh {
+    height: 2rem;
+    width: 2rem;
+}
+
+.tag {
+    justify-self: start;
+    align-self: center;
+}
+
+.btn--btm--p1_score {
+    background: #31C3BD;
+}
+
+.btn--btm--p2_score, .btn--modal--next {
+    background: #F2B137;
+}
+
+.btn--btm--ties, .btn--modal--quit {
+    background: #a8bfc9;;
+}
+
+.modal--container {
+    width: 100vw;
+    position: fixed;
+}
+
+.modal {
+    background: #1f3641;
+    height: 11rem;
+    width: 70rem;
+}
+
+.modal-content {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px 0;
+}
+
+.modal-header {
+    color: #a8bfc9;
+    font-size: 1.2rem;
+}
+
+.btn--modal {
+    height: 3rem;
+    padding: 0.5rem 2rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1a2a33;
+}
+
+.btn--2--pane {
+    gap: 15px;
+}
+
+.winner--title {
+    color:#a8bfc9;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.message--text {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    padding-bottom: 2px;
+    /* border: 2px solid greenyellow; */
+}
+
+.message--text--O {
+    color: #F2B137;
+}
+
+.message--text--X {
+    color: #31C3BD;
+}
+
+.message--text-tied {
+    color: #a8bfc9;
+}
+
+.score {
+    display: block;
+    font-size: 1.6rem;
+}
+
