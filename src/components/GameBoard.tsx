@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState, useReducer } from 'react'
 import './BoardStyles.css'
-import {tileIconO, tileIconX, iconO, iconX, iconOSmall, iconXSmall, iconRefresh} from './Icons'
+import {tileIconO, tileIconX, iconO, iconX, iconOSmall, iconXSmall, iconRefresh, outlineTileIconO, outlineTileIconX} from './Icons'
 import {reducer, initialState} from './reducer'
 //import { playerO, playerX, winLinesObj  } from './CkeckWinner'
 import GameModal from './GameModal'
 // import { winLinesObj } from './CkeckWinner'
 
-export let tileArr: (string | React.ReactNode)[] = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
+export let tileArr: (string | React.ReactElement<SVGElement>)[] = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
 export let winnerArr: (string)[] = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
 export let scoreCountObj = {
   playerXWinCount: 0,
@@ -34,19 +34,14 @@ const GameBoard = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    console.log("clicked")
     let symbol: React.ReactNode;
     (state.moveCount+1) % 2 === 0 ? symbol = tileIconO : symbol = tileIconX
     tileArr[Number(event.currentTarget.dataset.index)] = symbol
     winnerArr[Number(event.currentTarget.dataset.index)] = symbol.props.className.split(" ")[2]
-    console.log(winnerArr)
-    // console.log(tileArr)
 
     dispatch({type: 'play'})
     event.currentTarget.disabled = true;
-    console.log(state)
-    //
-    declareWinner()
+     declareWinner()
   }
 
   const declareWinner = () => {
@@ -72,9 +67,9 @@ const GameBoard = () => {
       'D2':[2,4,6]
     }
 
-    type paintWinLinesType = (color:string) => void
+    type paintWinLinesType = (color:string, outlineIcon: React.ReactElement<SVGElement>) => void
 
-    const paintWinLines: paintWinLinesType = (color:string) => {
+    const paintWinLines: paintWinLinesType = (color, outlineIcon) => {
       const symbolArr = Array.from(document.querySelectorAll('icon--tile--X') as TileArr)
       for(let key in winLinesObj) {
         if(winLinesObj[key][0] !== ' ' && winLinesObj[key][0] === winLinesObj[key][1] && winLinesObj[key][1] === winLinesObj[key][2]) {
@@ -82,7 +77,8 @@ const GameBoard = () => {
             arr[winButtonIndex].style.backgroundColor = color;
           }
           for(let winButtonIndex of winLinesObjByIndex[key]){
-            symbolArr[winButtonIndex].style.fill = '#1a2a33';
+            // symbolArr[winButtonIndex].style.fill = '#1f3641';
+            tileArr[winButtonIndex] = outlineIcon
           }
 
         }
@@ -90,9 +86,6 @@ const GameBoard = () => {
   }
 
     const winLineValues = Object.values(winLinesObj)
-
-    console.log(playerO, playerX)
-    console.log(winLineValues)
 
     const stringifiedWinLineValues = winLineValues.map((val) => val.join(" "))
 
@@ -106,9 +99,11 @@ const GameBoard = () => {
 
       scoreCountObj.playerXWinCount++
       setModalShow(true)
-      //paintWinLines('#31C3BD')
+      paintWinLines('#31C3BD', outlineTileIconX)
 
-      // if(boardContainer && modalShow) {boardContainer.classList.add('faint')}
+      const boardContainer = document.querySelector('container')
+
+      if(boardContainer && modalShow) {boardContainer.classList.add('faint')}
     }
     else if(stringifiedWinLineValues.includes(playerO.join(" "))) {
       winnerMessage = <div className='message flexed'>
@@ -120,11 +115,11 @@ const GameBoard = () => {
       winnerTitle = <h6 className='winner--title'>Player-O wins...</h6>
       scoreCountObj.playerOWinCount++
       setModalShow(true)
-      //paintWinLines('#F2B137')
+      paintWinLines('#F2B137', outlineTileIconO)
 
       const boardContainer = document.querySelector('container')
 
-      // if(boardContainer) boardContainer.classList.add = 'faint'
+      if(boardContainer && modalShow) {boardContainer.classList.add('faint')}
     }
     else if(state.moveCount === 8 && 
       (!(stringifiedWinLineValues.includes(playerX.join(" "))) || 
@@ -152,13 +147,13 @@ const GameBoard = () => {
 
   const handleReset: handleResetFunction = () : void => {
     setModalShow(false)
-    console.log("reset clicked")
      dispatch({type: 'reset'})
      tileArr = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
      winnerArr = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
-     console.log('state after reset', state)
-     console.log(arr)
-     arr.forEach(tile => tile.disabled = false)
+     arr.forEach(tile => {
+       tile.disabled = false
+       tile.style.backgroundColor = '#1f3641'
+      })
      
   }
 
