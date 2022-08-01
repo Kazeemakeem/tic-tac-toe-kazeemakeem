@@ -70,7 +70,7 @@ const GameBoard = () => {
     type paintWinLinesType = (color:string, outlineIcon: React.ReactElement<SVGElement>) => void
 
     const paintWinLines: paintWinLinesType = (color, outlineIcon) => {
-      const symbolArr = Array.from(document.querySelectorAll('icon--tile--X') as TileArr)
+      const symbolArr = Array.from(document.querySelectorAll('.icon--tile--X') as TileArr)
       for(let key in winLinesObj) {
         if(winLinesObj[key][0] !== ' ' && winLinesObj[key][0] === winLinesObj[key][1] && winLinesObj[key][1] === winLinesObj[key][2]) {
           for(let winButtonIndex of winLinesObjByIndex[key]){
@@ -101,7 +101,7 @@ const GameBoard = () => {
       setModalShow(true)
       paintWinLines('#31C3BD', outlineTileIconX)
 
-      const boardContainer = document.querySelector('container')
+      const boardContainer = document.querySelector('.container')
 
       if(boardContainer && modalShow) {boardContainer.classList.add('faint')}
     }
@@ -117,7 +117,7 @@ const GameBoard = () => {
       setModalShow(true)
       paintWinLines('#F2B137', outlineTileIconO)
 
-      const boardContainer = document.querySelector('container')
+      const boardContainer = document.querySelector('.container')
 
       if(boardContainer && modalShow) {boardContainer.classList.add('faint')}
     }
@@ -156,7 +156,6 @@ const GameBoard = () => {
       })
      
   }
-
 
   return (
     <div className='container flexed'>
