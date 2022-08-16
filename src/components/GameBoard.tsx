@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useReducer } from 'react'
+import React, { useState, useReducer } from 'react'
 import './BoardStyles.css'
 import {tileIconO, tileIconX, iconO, iconX, iconOSmall, iconXSmall, iconRefresh, outlineTileIconO, outlineTileIconX} from './Icons'
 import {reducer, initialState} from './reducer'
@@ -77,7 +77,7 @@ const GameBoard = () => {
             arr[winButtonIndex].style.backgroundColor = color;
           }
           for(let winButtonIndex of winLinesObjByIndex[key]){
-            // symbolArr[winButtonIndex].style.fill = '#1f3641';
+            symbolArr[winButtonIndex].style.fill = '#1f3641';
             tileArr[winButtonIndex] = outlineIcon
           }
 
