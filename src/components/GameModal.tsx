@@ -1,6 +1,5 @@
 import React from 'react'
 import './BoardStyles.css'
-import { scoreCountObj, winnerMessage } from './GameBoard'
 
 type handleResetFunction = () => void;
 type handleQuitFunction = () => void;
