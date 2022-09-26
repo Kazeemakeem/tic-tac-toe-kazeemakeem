@@ -115,23 +115,33 @@
     background: #31C3BD;
 }
 
-.btn--btm--p2_score, .btn--modal--next {
+.btn--btm--p2_score, 
+.btn--modal--next, 
+.btn--instruction--next {
     background: #F2B137;
 }
 
-.btn--btm--ties, .btn--modal--quit {
-    background: #a8bfc9;;
+.btn--btm--ties, 
+.btn--modal--quit,
+.btn--instruction--prev {
+    background: #a8bfc9;
 }
 
-.modal--container {
+.modal--container,
+.instruction--container {
     width: 100vw;
     position: fixed;
 }
 
-.modal {
+.modal,
+.instruction {
     background: #1f3641;
-    height: 11rem;
+    height: 13rem;
     width: 70rem;
+}
+
+.instruction {
+    height: 15rem;
 }
 
 .modal-content {
@@ -142,12 +152,32 @@
     padding: 10px 0;
 }
 
-.modal-header {
+.instruction-content {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.modal-header,
+.instruction-header {
     color: #a8bfc9;
     font-size: 1.2rem;
 }
 
-.btn--modal {
+.instruction-header {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.instruction-message {
+    font-size: 1.3rem;
+}
+
+.btn--modal,
+.btn--instruction {
     height: 3rem;
     padding: 0.5rem 2rem;
     text-transform: uppercase;
@@ -158,6 +188,10 @@
 
 .btn--2--pane {
     gap: 15px;
+}
+
+.instruction-footer {
+    margin-top: 10px;
 }
 
 .winner--title {
@@ -178,7 +212,8 @@
     color: #F2B137;
 }
 
-.message--text--X {
+.message--text--X,
+.instruction-message {
     color: #31C3BD;
 }
 

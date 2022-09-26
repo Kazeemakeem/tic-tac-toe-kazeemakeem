@@ -4,6 +4,7 @@ import {tileIconO, tileIconX, iconO, iconX, iconOSmall, iconXSmall, iconRefresh,
 import {reducer, initialState} from './reducer'
 //import { playerO, playerX, winLinesObj  } from './CkeckWinner'
 import GameModal from './GameModal'
+import GameInstructions from './GameInstructions'
 // import { winLinesObj } from './CkeckWinner'
 
 export let tileArr: (string | React.ReactElement<SVGElement>)[] = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
@@ -28,7 +29,7 @@ const GameBoard = () => {
   // console.log('boardContainer', boardContainer)
 
 
-  const [modalShow, setModalShow] = useState(false)  
+  const [modalShow, setModalShow] = useState(false) 
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -145,7 +146,7 @@ const GameBoard = () => {
 
   const arr = Array.from(document.querySelectorAll('button.btn--tiles') as TileArr)
 
-  const handleReset: handleResetFunction = () : void => {
+  const handleReset: handleResetFunction = () => {
     setModalShow(false)
      dispatch({type: 'reset'})
      tileArr = [' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ']
@@ -156,6 +157,10 @@ const GameBoard = () => {
       })
      
   }
+
+  // const handleHideInstructions = () : void => {
+  //   setShowInstructions(false)
+  // }
 
   return (
     <div className='container flexed'>
@@ -182,6 +187,7 @@ const GameBoard = () => {
         <button className='btn btn--btm btn--btm--p2_score'>O-SCORE <span className='score'>{scoreCountObj.playerOWinCount}</span></button>
       </div>
       <GameModal show={modalShow} message={winnerMessage} handlereset={handleReset} handlequit={handleQuit} winnertitle={winnerTitle}/>
+      <GameInstructions />
     </div>
     
   )
