@@ -1,20 +1,10 @@
 import React, { useState } from 'react'
 import './BoardStyles.css'
 
-// type handleHideInstructions = () => void;
-// type handleQuitFunction = () => void;
-
-// type InstructionsModalProps = {
-//   showInstructions: boolean; 
-//   handleHideInstr: handleHideInstructions;
-// }
-
 const InstructionsModal = () => {
 
   const [pageNumber, setPageNumber] = useState(1)
-  const [showInstructions, setShowInstructions] = useState(true)   
-  const [instruction, setInstruction] = useState('')
-
+  const [showInstructions, setShowInstructions] = useState(true)
   
 
   const instructionObj: Record<string, string> = {
@@ -24,25 +14,6 @@ const InstructionsModal = () => {
     '4': '3. Done reading the instructions? Click start to begin...',
 
   }
-
-  // switch(pageNumber) {
-  //   case 1: {
-  //     setInstruction()
-  //     break
-  //   }
-  //   case 2: {
-  //     setInstruction('The game involves two players (X and O)')
-  //     break
-  //   }
-  //   case 3: {
-  //     setInstruction('First player to align symbols vertically, horizontally or diagonally wins the round')
-  //     break
-  //   }
-  //   case 4: {
-  //     setInstruction('Done reading the instructions? Click start to begin...')
-  //     break
-  //   }
-  // }
 
   const incrementPageNo = () => {
     pageNumber < 4 ? setPageNumber(pageNumber + 1) : setShowInstructions(false)
